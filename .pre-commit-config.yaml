@@ -56,12 +56,11 @@ repos:
 # Python: Ruff linter & formatter
 #   https://docs.astral.sh/ruff/
 - repo: https://github.com/astral-sh/ruff-pre-commit
-  rev: v0.5.7
+  rev: v0.6.3
   hooks:
     # Run the linter
     - id: ruff
       args: [--fix, --exit-non-zero-on-fix]
-      types_or: [python, jupyter]
     # Run the formatter
     - id: ruff-format
 
