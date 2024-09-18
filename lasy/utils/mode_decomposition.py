@@ -64,15 +64,12 @@ def hermite_gauss_decomposition(laserProfile, n_x_max=12, n_y_max=12, res=1e-6):
     else:
         lo[0] = -laserProfile.w0 * 5 + laserProfile.x_offset
         lo[1] = -laserProfile.w0 * 5 + laserProfile.x_offset
-        hi[0] = laserProfile.w0 * 5 + laserProfile.x_offset
-        hi[1] = laserProfile.w0 * 5 + laserProfile.x_offset
-
-    N_pts_x = int((hi[0] - lo[0]) / res)
-    N_pts_y = int((hi[1] - lo[1]) / res)
+        hi[0] =  laserProfile.w0 * 5 + laserProfile.x_offset
+        hi[1] =  laserProfile.w0 * 5 + laserProfile.x_offset
 
     # Define spatial arrays
-    x = np.linspace(lo[0], hi[0], N_pts_x)
-    y = np.linspace(lo[1], hi[1], N_pts_y)
+    x = np.arange(lo[0], hi[0], res)
+    y = np.arange(lo[1], hi[1], res)
     X, Y = np.meshgrid(x, y)
     dx = x[2] - x[1]
     dy = y[2] - y[1]
