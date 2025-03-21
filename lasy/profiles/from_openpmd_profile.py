@@ -26,11 +26,11 @@ class FromOpenPMDProfile(FromArrayProfile):
     field : string
         Name of the field containing the laser pulse.
 
-    omega0 : float
-        Angular frequency at which laser envelope is defined.
-
     compontent : string
         Name of the component of the field to be read.
+        
+    omega0 : float
+        Angular frequency at which laser envelope is defined.
 
     is_envelope : bool
         Whether the field provided uses the (complex) envelope representation, as
@@ -43,8 +43,8 @@ class FromOpenPMDProfile(FromArrayProfile):
         path,
         iteration,
         field,
-        omega0=None,
         component=None,
+        omega0=None,
         is_envelope=True,
     ):
         # Read the data
