@@ -91,13 +91,13 @@ class FromArrayProfile(Profile):
             # For now, this only fix profiles with one mode.
             if len(self.array.shape) == 3:
                 for i in range(self.array.shape[0]):
+                    if i == 1: # As laser is stored in the first mode
                         self.combined_field_interp = RegularGridInterpolator(
                             (r, axes["t"]),
                             np.abs(self.array[i]) + 1.0j * np.unwrap(np.angle(self.array[i]), axis=-1),
                             bounds_error=False,
                             fill_value=0.0,
                         )
-
             else:
                 self.combined_field_interp = RegularGridInterpolator(
                     (r, axes["t"]),
