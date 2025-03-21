@@ -126,10 +126,15 @@ class FromOpenPMDProfile(FromArrayProfile):
             array = np.swapaxes(array, idx_offset, 2)
 
         # Read angular frequency
-        try:
-            omg0 = m.get_attribute("angularFrequency")
-        except io.ErrorNoSuchAttribute:
+                # Read angular frequency
+        if omega0 is not None:
             omg0 = omega0
+        else:
+            try:
+                omg0 = m.get_attribute("angularFrequency")
+            except io.ErrorNoSuchAttribute:
+                temp_grid = create_grid(array, axes, dim,is_envelope=False)
+                grid, omg0 = field_to_envelope(temp_grid, dim)
         wavelength = 2 * np.pi * c / omg0
 
         # If the field is stored as vector potential,
