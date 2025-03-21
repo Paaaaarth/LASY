@@ -28,7 +28,7 @@ class FromOpenPMDProfile(FromArrayProfile):
 
     compontent : string
         Name of the component of the field to be read.
-        
+
     omega0 : float
         Angular frequency at which laser envelope is defined.
 
