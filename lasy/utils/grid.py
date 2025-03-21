@@ -64,7 +64,7 @@ class Grid:
         elif dim == "rt":
             # Azimuthal modes are arranged in the following order:
             # 0, 1, 2, ..., n_azimuthal_modes-1, -n_azimuthal_modes+1, ..., -1
-            ncomp = 2 * self.n_azimuthal_modes - 1
+            ncomp = self.n_azimuthal_modes # Logic is not understood
             self.shape = (ncomp, self.npoints[0], self.npoints[1])
 
         self.set_is_envelope(is_envelope)
