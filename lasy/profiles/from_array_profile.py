@@ -90,17 +90,21 @@ class FromArrayProfile(Profile):
             # First dimension corresponds to the azimuthal mode decomposition.
             # For now, this only fix profiles with one mode.
             if len(self.array.shape) == 3:
-                assert self.array.shape[0] == 1, (
-                    "Handling `rt` profiles with more than one azimuthal mode still needs to be implemented."
-                )
-                self.array = self.array[0]
+                for i in range(self.array.shape[0]):
+                        self.combined_field_interp = RegularGridInterpolator(
+                            (r, axes["t"]),
+                            np.abs(self.array[i]) + 1.0j * np.unwrap(np.angle(self.array[i]), axis=-1),
+                            bounds_error=False,
+                            fill_value=0.0,
+                        )
 
-            self.combined_field_interp = RegularGridInterpolator(
-                (r, axes["t"]),
-                np.abs(self.array) + 1.0j * np.unwrap(np.angle(self.array), axis=-1),
-                bounds_error=False,
-                fill_value=0.0,
-            )
+            else:
+                self.combined_field_interp = RegularGridInterpolator(
+                    (r, axes["t"]),
+                    np.abs(self.array) + 1.0j * np.unwrap(np.angle(self.array), axis=-1),
+                    bounds_error=False,
+                    fill_value=0.0,
+                )
 
     def evaluate(self, x, y, t):
         """Return the envelope field of the scaled profile."""
