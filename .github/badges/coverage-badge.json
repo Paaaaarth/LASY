@@ -1,6 +1,12 @@
 {
-  "schemaVersion": 1,
-  "label": "coverage",
-  "message": "84%",
-  "color": "green"
-}
+    "schemaVersion": 1,
+    "label": "coverage",
+    "message": "84%",,
+    "color": "green",
+    "history": [
+      {
+        "timestamp": "2025-04-28T11:59:40Z",
+        "coverage": "84%",
+      }
+    ]
+  }
