@@ -99,3 +99,4 @@ jobs:
         branch: update-coverage-badge
         base: development
         delete-branch: true
+        push-to-fork: Paaaaarth/LASY
